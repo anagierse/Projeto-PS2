@@ -1,0 +1,8 @@
+body {
+    margin: 0;
+    background-color: #dcdcdc;
+    min-width: 100%;
+    width: fit-content;
+    max-width: max-content;
+    display: flex;
+  }
