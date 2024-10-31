@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-add-receita',
@@ -15,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 export class AddReceitaComponent {
   recipe = {
+    id: uuidv4(), // Gera um UUID único ao inicializar o objeto
     name: '',
     description: '',
     imageUrl: '',

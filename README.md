@@ -1,4 +1,8 @@
 npm install -g @angular/cli
+ 
+cd /workspaces/Projeto-PS2/Projeto-PS2-main/Front-End/site-receitas
 
-no projeto 
 npm install
+
+ng serve
+

@@ -1,21 +1,11 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; 
-import { CardReceitaComponent } from './card-receita/card-receita.component';
-import { v4 as uuidv4 } from 'uuid';
-import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { v4 as uuidv4 } from 'uuid'; 
+import { Receita } from '../models/receita-model';
 
-
-@Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule, CardReceitaComponent], 
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+@Injectable({
+  providedIn: 'root'
 })
-export class HomeComponent {
-  
-  constructor(private router: Router) {}
- 
+export class ReceitaService {
   receitas = [
     {
       id: uuidv4(),
@@ -81,8 +71,13 @@ export class HomeComponent {
       imagemUrl: 'https://example.com/imagem9.jpg'
     }
   ];
-  onReceitaSelecionada(id: string) {
-    this.router.navigate(['/verReceita', id]);
+
+  getReceitaById(id: string): Receita | null {
+    const receita = this.receitas.find(receita => receita.id === id);
+    return receita ? receita : null; // Retorna null se não encontrar a receita
   }
-  
 }
+
+
+
+

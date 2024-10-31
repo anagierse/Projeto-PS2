@@ -1,0 +1,16 @@
+<div class="container mt-4">
+    <button class="btn btn-secondary mb-3" (click)="voltar()">Voltar para Home</button>
+  
+    <div *ngIf="receita">
+        <h1>{{ receita.titulo }}</h1>
+        <img [src]="receita.imagemUrl" alt="{{ receita.titulo }}">
+        <p>{{ receita.descricao }}</p>
+        <p><strong>Modo de Preparo:</strong> {{ receita.modoPreparo }}</p>
+        <button (click)="router.navigate(['/home'])">Voltar para Home</button>
+      </div>
+      <div *ngIf="!receita">
+        <p>Receita não encontrada.</p>
+      </div>
+    </div>
+</div>
+  

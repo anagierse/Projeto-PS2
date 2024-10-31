@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card-receita',
@@ -11,4 +11,11 @@ export class CardReceitaComponent {
   @Input() titulo: string = '';
   @Input() descricao: string = '';
   @Input() imagemUrl: string = ''; 
+
+  @Input() id!: string;
+  @Output() receitaSelecionada = new EventEmitter<string>();
+
+  verReceita() {
+    this.receitaSelecionada.emit(this.id);
+  }
 }
