@@ -8,7 +8,7 @@
 		<version>3.3.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.dev.receitas</groupId>
+	<groupId>receitas</groupId>
 	<artifactId>receitas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>receitas</name>

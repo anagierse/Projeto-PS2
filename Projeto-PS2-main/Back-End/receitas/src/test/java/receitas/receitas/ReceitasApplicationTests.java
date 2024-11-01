@@ -1,4 +1,4 @@
-package br.dev.receitas.receitas;
+package receitas.receitas;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
