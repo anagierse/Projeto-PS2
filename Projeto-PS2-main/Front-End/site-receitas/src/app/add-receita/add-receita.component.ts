@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-add-receita',
@@ -10,7 +11,8 @@ import { v4 as uuidv4 } from 'uuid';
   imports: [ 
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NavbarComponent 
   ],
   templateUrl: './add-receita.component.html',
   styleUrl: './add-receita.component.css'

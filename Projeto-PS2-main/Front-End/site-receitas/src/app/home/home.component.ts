@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { CardReceitaComponent } from './card-receita/card-receita.component';
 import { v4 as uuidv4 } from 'uuid';
 import { Router } from '@angular/router';
+import { NavbarComponent } from '../navbar/navbar.component'; 
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, CardReceitaComponent], 
+  imports: [CommonModule, CardReceitaComponent, NavbarComponent ], 
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
