@@ -1,16 +1,17 @@
 <div class="container mt-4">
     <button class="btn btn-secondary mb-3" (click)="voltar()">Voltar para Home</button>
   
-    <div *ngIf="receita">
-        <h1>{{ receita.titulo }}</h1>
-        <img [src]="receita.imagemUrl" alt="{{ receita.titulo }}">
-        <p>{{ receita.descricao }}</p>
-        <p><strong>Modo de Preparo:</strong> {{ receita.modoPreparo }}</p>
-        <button (click)="router.navigate(['/home'])">Voltar para Home</button>
-      </div>
-      <div *ngIf="!receita">
-        <p>Receita não encontrada.</p>
-      </div>
+    <div>
+      <h1>Título</h1>
+      <img style="max-width: 30rem;" src="https://www.estadao.com.br/resizer/v2/RD3ZD2DLZBBFPLNWYWACIMVYBE.jpeg?quality=80&auth=e8c3b735c9db1b8295524af652b2addfee589437d52d1eed722eb7b06849edec&width=1075&height=527&focal=3139,2028" />
+      <h2>Ingredientes</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla at risus. Quisque purus magna, auctor et, sagittis ac, posuere eu, lectus. Nam mattis, felis ut adipiscing</p>
+      <h2>descrição</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla at risus. Quisque purus magna, auctor et, sagittis ac, posuere eu, lectus. Nam mattis, felis ut adipiscing</p>
+      <h2>modo de preparo</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla at risus. Quisque purus magna, auctor et, sagittis ac, posuere eu, lectus. Nam mattis, felis ut adipiscing</p>
     </div>
-</div>
+    
+
+  </div>
   

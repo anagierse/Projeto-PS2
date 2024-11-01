@@ -9,8 +9,7 @@ import { ReceitaService } from '../services/receita.service';
   styleUrls: ['./ver-receita.component.css']
 })
 export class VerReceitaComponent implements OnInit {
-  receita!: Receita | null;
-
+  receita: Receita | null = null; 
   constructor(
     private route: ActivatedRoute,
     private receitaService: ReceitaService,
@@ -19,16 +18,16 @@ export class VerReceitaComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    
+
     if (id) {
       this.receita = this.receitaService.getReceitaById(id);
-      if (!this.receita) { // Adicionei esta verificação
-        console.error('Receita não encontrada.');
-        this.router.navigate(['/home']);
-      }
     } else {
       console.error('ID da receita não encontrado.');
       this.router.navigate(['/home']);
     }
+  }
+
+  voltar() {
+    this.router.navigate(['/home']);
   }
 }

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
@@ -14,13 +15,20 @@ import { v4 as uuidv4 } from 'uuid';
   templateUrl: './add-receita.component.html',
   styleUrl: './add-receita.component.css'
 })
-export class AddReceitaComponent {
-  recipe = {
-    id: uuidv4(), // Gera um UUID único ao inicializar o objeto
+export class AddReceitaComponent  implements OnInit {
+  logado: boolean | undefined;
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.logado = sessionStorage.getItem('logado') === '1';  
+  }
+  
+    recipe = {
+    id: uuidv4(),
     name: '',
     description: '',
     imageUrl: '',
-    ingredients: [''] // Começa com um ingrediente vazio
+    ingredients: [''] 
   };
 
   addIngredient() {
@@ -37,8 +45,11 @@ export class AddReceitaComponent {
     console.log(this.recipe);
   }
 
-  // Função para rastrear elementos pelo índice no *ngFor
   trackByIndex(index: number, item: any): any {
     return index;
+  }
+
+  login() {
+    this.router.navigate(['/login']);
   }
 }

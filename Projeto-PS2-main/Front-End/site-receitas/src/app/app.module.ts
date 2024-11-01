@@ -6,6 +6,7 @@ import { LoginModule } from './login/login.module';
 import { AppComponent } from './app.component';
 import { CriarUserModule } from './criar-user/criar-user.module';
 import { RouterModule } from '@angular/router';
+import { VerReceitaModule } from './ver-receita/ver-receita.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     LoginModule,
     CriarUserModule,
+    VerReceitaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

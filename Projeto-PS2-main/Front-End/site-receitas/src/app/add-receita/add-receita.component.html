@@ -12,11 +12,12 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Login</a>
         </li>
-  </ul>
+      </ul>
     </div>
   </div>
 </nav>
-<div class="container mt-4">
+
+<div class="container mt-4" *ngIf="logado">
   <h3>Cadastro de Receita</h3>
   <form (ngSubmit)="submitRecipe()">
     <div class="mb-3">
@@ -82,4 +83,9 @@
 
     <button type="submit" class="btn btn-success">Salvar Receita</button>
   </form>
+</div>
+
+<div *ngIf="!logado" style="text-align: center;">
+  <h2>Para adicionar uma receita, por favor faça o login</h2>
+  <button class="btn btn-danger" href="#">Fazer Login</button>
 </div>
