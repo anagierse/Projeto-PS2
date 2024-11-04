@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div class="container mt-4" *ngIf="logado">
+<div class="container mt-4" *ngIf="logado" style="min-height: 100%; min-width: 100%;">
   <h3>Cadastro de Receita</h3>
   <form (ngSubmit)="submitRecipe()">
     <div class="mb-3">
@@ -17,6 +17,17 @@
 
     <div class="mb-3">
       <label for="recipeDescription" class="form-label">Descrição</label>
+      <textarea
+        id="recipeDescription"
+        class="form-control"
+        [(ngModel)]="recipe.description"
+        name="description"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="recipeDescription" class="form-label">Modo de Preparo</label>
       <textarea
         id="recipeDescription"
         class="form-control"
@@ -70,5 +81,5 @@
 
 <div *ngIf="!logado" style="text-align: center;">
   <h2>Para adicionar uma receita, por favor faça o login</h2>
-  <button class="btn btn-danger" href="#">Fazer Login</button>
+  <button class="btn btn-outline-danger" style="margin-top: 2rem;" (click)="login()">Fazer Login</button>
 </div>

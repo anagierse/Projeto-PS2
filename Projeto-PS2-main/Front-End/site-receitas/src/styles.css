@@ -1,9 +1,15 @@
 body {
     margin: 0;
-    background-color: #dcdcdc;
     min-width: 100%;
     width: fit-content;
     max-width: max-content;
     display: flex;
+    background-color:  #F7EED3;
+  
   }
+
+  html, body {
+    margin: 0;
+    height: 100%;
+}
 

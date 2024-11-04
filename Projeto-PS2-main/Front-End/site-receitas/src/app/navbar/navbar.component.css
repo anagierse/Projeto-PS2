@@ -2,3 +2,8 @@ a{
     color:#674636;
     font-weight:600;
 }
+
+li{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
