@@ -1,5 +1,7 @@
 package entities;
-
+//Ana Clara Gierse Raymundo 10428453
+//Luana Domingo Branco 10428459
+//Victor Luiz de Sá Alves 10426310
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
