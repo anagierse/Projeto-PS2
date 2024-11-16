@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { ReceitaService } from '../services/receita.service';
+import { Receita } from '../models/receita-model';
 
 @Component({
   selector: 'app-add-receita',
@@ -17,36 +19,57 @@ import { NavbarComponent } from '../navbar/navbar.component';
   templateUrl: './add-receita.component.html',
   styleUrl: './add-receita.component.css'
 })
-export class AddReceitaComponent  implements OnInit {
+export class AddReceitaComponent implements OnInit {
   logado: boolean | undefined;
-  constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    this.logado = sessionStorage.getItem('logado') === '1';  
-  }
-  
-    recipe = {
+  recipe: Receita = {
     id: uuidv4(),
-    name: '',
-    description: '',
-    imageUrl: '',
-    ingredients: [''] 
+    nome: '',
+    descricao: '',
+    urlImagem: '',
+    ingredientes: [''],
+    modoPreparo: ''
   };
 
+  constructor(private router: Router, private receitaService: ReceitaService) {}
+
+  ngOnInit(): void {
+    this.logado = sessionStorage.getItem('logado') === '1';
+  }
+
   addIngredient() {
-    this.recipe.ingredients.push('');
+    if (typeof this.recipe.ingredientes === 'string') {
+      this.recipe.ingredientes = [this.recipe.ingredientes];
+    }
+    this.recipe.ingredientes.push('');
   }
 
   removeIngredient(index: number) {
-    if (this.recipe.ingredients.length > 1) {
-      this.recipe.ingredients.splice(index, 1);
+    if (typeof this.recipe.ingredientes === 'string') {
+      this.recipe.ingredientes = [this.recipe.ingredientes];
+    }
+    if (this.recipe.ingredientes.length > 1) {
+      this.recipe.ingredientes.splice(index, 1);
     }
   }
 
   submitRecipe() {
-    console.log(this.recipe);
+    if (this.recipe.nome && this.recipe.descricao && Array.isArray(this.recipe.ingredientes) && this.recipe.ingredientes.length > 0) {
+      this.recipe.ingredientes = this.recipe.ingredientes.join(', ');
+  
+      this.receitaService.saveReceita(this.recipe).subscribe({
+        next: (response) => {
+          console.log('Receita criada com sucesso!', response);
+          this.router.navigate(['/home']);
+        },
+        error: (err) => {
+          console.error('Erro ao criar receita:', err);
+          alert('Erro ao salvar a receita. Tente novamente mais tarde.');
+        }
+      });
+    }
   }
-
+  
   trackByIndex(index: number, item: any): any {
     return index;
   }

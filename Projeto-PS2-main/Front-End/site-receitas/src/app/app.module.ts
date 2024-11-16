@@ -4,9 +4,9 @@ import { AppRoutingModule, routes } from './app.routes';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginModule } from './login/login.module';
 import { AppComponent } from './app.component';
-import { CriarUserModule } from './criar-user/criar-user.module';
 import { RouterModule } from '@angular/router';
 import { VerReceitaModule } from './ver-receita/ver-receita.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,8 +18,8 @@ import { VerReceitaModule } from './ver-receita/ver-receita.module';
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     LoginModule,
-    CriarUserModule,
-    VerReceitaModule
+    VerReceitaModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
