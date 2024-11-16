@@ -20,8 +20,10 @@ export class VerReceitaComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
 
     if (id) {
-      this.receita = this.receitaService.getReceitaById(id);
-    } else {
+      this.receitaService.getReceitaById(Number(id)).subscribe((receita) => {
+        this.receita = receita;
+      });
+        } else {
       console.error('ID da receita não encontrado.');
       this.router.navigate(['/home']);
     }

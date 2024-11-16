@@ -1,11 +1,12 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
-import { NavbarComponent } from '../navbar/navbar.component';
-import { ReceitaService } from '../services/receita.service';
 import { Receita } from '../models/receita-model';
+import { ReceitaService } from '../services/receita.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-receita',
@@ -14,10 +15,10 @@ import { Receita } from '../models/receita-model';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NavbarComponent 
+    NavbarComponent,
   ],
   templateUrl: './add-receita.component.html',
-  styleUrl: './add-receita.component.css'
+  styleUrl: './add-receita.component.css',
 })
 export class AddReceitaComponent implements OnInit {
   logado: boolean | undefined;
@@ -27,7 +28,7 @@ export class AddReceitaComponent implements OnInit {
     nome: '',
     descricao: '',
     urlImagem: '',
-    ingredientes: [''],
+    ingredientes: [''],  
     modoPreparo: ''
   };
 
@@ -35,42 +36,36 @@ export class AddReceitaComponent implements OnInit {
 
   ngOnInit(): void {
     this.logado = sessionStorage.getItem('logado') === '1';
+
   }
 
   addIngredient() {
-    if (typeof this.recipe.ingredientes === 'string') {
-      this.recipe.ingredientes = [this.recipe.ingredientes];
+    if (Array.isArray(this.recipe.ingredientes)) {
+      this.recipe.ingredientes.push('');
     }
-    this.recipe.ingredientes.push('');
   }
 
   removeIngredient(index: number) {
-    if (typeof this.recipe.ingredientes === 'string') {
-      this.recipe.ingredientes = [this.recipe.ingredientes];
-    }
-    if (this.recipe.ingredientes.length > 1) {
+    if (Array.isArray(this.recipe.ingredientes) && this.recipe.ingredientes.length > 1) {
       this.recipe.ingredientes.splice(index, 1);
     }
   }
 
   submitRecipe() {
-    if (this.recipe.nome && this.recipe.descricao && Array.isArray(this.recipe.ingredientes) && this.recipe.ingredientes.length > 0) {
-      this.recipe.ingredientes = this.recipe.ingredientes.join(', ');
-  
-      this.receitaService.saveReceita(this.recipe).subscribe({
-        next: (response) => {
-          console.log('Receita criada com sucesso!', response);
-          this.router.navigate(['/home']);
-        },
-        error: (err) => {
-          console.error('Erro ao criar receita:', err);
-          alert('Erro ao salvar a receita. Tente novamente mais tarde.');
-        }
-      });
-    }
+
+    this.receitaService.saveReceita(this.recipe).subscribe({
+      next: (response: any) => {
+        console.log('Receita criada com sucesso!', response);
+        this.router.navigate(['/home']);
+      },
+      error: (err: any) => {
+        console.error('Erro ao criar receita:', err);
+        alert('Erro ao salvar a receita. Tente novamente mais tarde.');
+      }
+    });
   }
-  
-  trackByIndex(index: number, item: any): any {
+
+  trackByIndex(index: number): number {
     return index;
   }
 

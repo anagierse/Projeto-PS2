@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div class="container mt-4" *ngIf="logado" style="min-height: 100%; min-width: 100%;">
+<div class="container mt-4" *ngIf="logado" style="min-height: 100%; min-width: 70%;">
   <h3>Cadastro de Receita</h3>
   <form (ngSubmit)="submitRecipe()">
     <div class="mb-3">
@@ -9,8 +9,8 @@
         type="text"
         id="recipeName"
         class="form-control"
-        [(ngModel)]="recipe.name"
-        name="name"
+        [(ngModel)]="recipe.nome"
+        name="nome"
         required
       />
     </div>
@@ -20,8 +20,8 @@
       <textarea
         id="recipeDescription"
         class="form-control"
-        [(ngModel)]="recipe.description"
-        name="description"
+        [(ngModel)]="recipe.descricao"
+        name="descricao"
         rows="3"
       ></textarea>
     </div>
@@ -31,8 +31,8 @@
       <textarea
         id="recipeDescription"
         class="form-control"
-        [(ngModel)]="recipe.description"
-        name="description"
+        [(ngModel)]="recipe.modoPreparo"
+        name="modoPreparo"
         rows="3"
       ></textarea>
     </div>
@@ -43,36 +43,35 @@
         type="url"
         id="recipeImage"
         class="form-control"
-        [(ngModel)]="recipe.imageUrl"
-        name="imageUrl"
+        [(ngModel)]="recipe.urlImagem"
+        name="urlImagem"
       />
     </div>
 
     <div class="mb-3">
       <label class="form-label">Ingredientes</label>
       <div
-        *ngFor="let ingredient of recipe.ingredients; let i = index; trackBy: trackByIndex"
+        *ngFor="let ingrediente of recipe.ingredientes; let i = index; trackBy: trackByIndex"
         class="input-group mb-2"
       >
         <input
           type="text"
           class="form-control"
           placeholder="Ingrediente"
-          [(ngModel)]="recipe.ingredients[i]"
+          [(ngModel)]="recipe.ingredientes[i]"
           name="ingredient-{{ i }}"
+          required
         />
         <button
           type="button"
           class="btn btn-danger"
           (click)="removeIngredient(i)"
-          *ngIf="recipe.ingredients.length > 1"
+          *ngIf="recipe.ingredientes.length > 1"
         >
           Remover
         </button>
       </div>
-      <button type="button" class="btn btn-primary" (click)="addIngredient()">
-        + Adicionar Ingrediente
-      </button>
+      <button type="button" class="btn btn-primary" (click)="addIngredient()">+ Adicionar Ingrediente</button>
     </div>
 
     <button type="submit" class="btn btn-success">Salvar Receita</button>
