@@ -7,7 +7,7 @@ import { Receita } from '../models/receita-model';
 })
 
 export class ReceitaService {
-  private baseUrl = 'http://localhost:8080/api'; 
+  private baseUrl = 'http://localhost:8080/api/receitas'; 
 
   constructor(private http: HttpClient) {}
 
