@@ -1,4 +1,4 @@
-package controllers;
+package receitas.controllers;
 //Ana Clara Gierse Raymundo 10428453
 //Luana Domingo Branco 10428459
 //Victor Luiz de Sá Alves 10426310
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import entities.Receita;
-import repositories.ReceitaRepository;
+import receitas.entities.Receita;
+import receitas.repositories.ReceitaRepository;
 
 @RestController
 @RequestMapping("/api/receitas")
