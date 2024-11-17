@@ -24,7 +24,6 @@ export class AddReceitaComponent implements OnInit {
   logado: boolean | undefined;
 
   recipe: Receita = {
-    id: uuidv4(),
     nome: '',
     descricao: '',
     urlImagem: '',

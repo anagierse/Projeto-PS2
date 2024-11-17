@@ -1,6 +1,8 @@
 package receitas.entities;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 //Ana Clara Gierse Raymundo 10428453
 //Luana Domingo Branco 10428459
 //Victor Luiz de Sá Alves 10426310
@@ -14,6 +16,7 @@ import jakarta.persistence.Table;
 @Table(name = "receita")
 public class Receita {
     @Id
+    @JsonFormat(shape = JsonFormat.Shape.STRING)  
    private UUID id;    
    private String nome;
     private String descricao;
@@ -21,6 +24,9 @@ public class Receita {
     private String ingredientes;
     private String modoPreparo;
 
+    public Receita() {
+    }
+    
     public Receita(String nome, String descricao, String urlImagem, String ingredientes, String modoPreparo) {
         this.nome = nome;
         this.descricao = descricao;
