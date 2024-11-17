@@ -15,8 +15,8 @@ public class WebConfigure implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
-                .allowedOrigins("http://localhost:4200") 
-                .allowedMethods("*")
-                .allowedHeaders("*");
-                }
+        .allowedOrigins("http://localhost:4200", "https://didactic-goggles-pjrqwpjgrqg9f9p9x-4200.app.github.dev")
+        .allowedMethods("GET", "POST", "PUT", "DELETE")
+        .allowedHeaders("*");
+    }
 }

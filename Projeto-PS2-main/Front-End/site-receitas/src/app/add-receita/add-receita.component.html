@@ -50,30 +50,16 @@
 
     <div class="mb-3">
       <label class="form-label">Ingredientes</label>
-      <div
-        *ngFor="let ingrediente of recipe.ingredientes; let i = index; trackBy: trackByIndex"
-        class="input-group mb-2"
-      >
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Ingrediente"
-          [(ngModel)]="recipe.ingredientes[i]"
-          name="ingredient-{{ i }}"
-          required
-        />
-        <button
-          type="button"
-          class="btn btn-danger"
-          (click)="removeIngredient(i)"
-          *ngIf="recipe.ingredientes.length > 1"
-        >
-          Remover
-        </button>
-      </div>
-      <button type="button" class="btn btn-primary" (click)="addIngredient()">+ Adicionar Ingrediente</button>
+      <!-- Removido o código de *ngFor e de botão, agora apenas um campo simples -->
+      <input
+        type="text"
+        id="ingredientes"
+        class="form-control"
+        [(ngModel)]="recipe.ingredientes"
+        name="ingredient"
+      />
     </div>
-
+    
     <button type="submit" class="btn btn-success">Salvar Receita</button>
   </form>
 </div>

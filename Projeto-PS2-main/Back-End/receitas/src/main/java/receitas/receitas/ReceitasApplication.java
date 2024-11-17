@@ -4,8 +4,10 @@ package receitas.receitas;
 //Victor Luiz de Sá Alves 10426310
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "receitas.receitas")
+@EntityScan(basePackages = "receitas.entities") 
 
 public class ReceitasApplication {
 

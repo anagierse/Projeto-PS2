@@ -28,7 +28,7 @@ export class AddReceitaComponent implements OnInit {
     nome: '',
     descricao: '',
     urlImagem: '',
-    ingredientes: [''],  
+    ingredientes: '',  
     modoPreparo: ''
   };
 
@@ -53,6 +53,10 @@ export class AddReceitaComponent implements OnInit {
 
   submitRecipe() {
 
+    if (Array.isArray(this.recipe.ingredientes)) {
+      this.recipe.ingredientes = this.recipe.ingredientes.join(", ");
+    }
+  
     this.receitaService.saveReceita(this.recipe).subscribe({
       next: (response: any) => {
         console.log('Receita criada com sucesso!', response);
