@@ -20,17 +20,17 @@ import entities.Receita;
 import repositories.ReceitaRepository;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/receitas")
 public class Controller {
     @Autowired
     private ReceitaRepository repository;
 
-    @GetMapping("/receitas")
+    @GetMapping()
     public Iterable<Receita> buscarTodos() {
         return repository.findAll();
     }
     
-    @GetMapping("/receitas/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Receita> getById(@PathVariable Long id){
         Optional<Receita> receita = repository.findById(id);
         if (receita.isPresent()) {
@@ -40,12 +40,12 @@ public class Controller {
         }
     }
 
-    @PostMapping("/receitas")
+    @PostMapping()
     public Receita salvarReceita(@RequestBody Receita novaReceita) {
         return repository.save(novaReceita);
     }
     
-    @DeleteMapping("/receitas/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarReceita(@PathVariable Long id) {
         if (repository.existsById(id)) {
             repository.deleteById(id);
