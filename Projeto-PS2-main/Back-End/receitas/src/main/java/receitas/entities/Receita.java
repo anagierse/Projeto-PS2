@@ -1,24 +1,21 @@
 package receitas.entities;
+import java.util.UUID;
+
 //Ana Clara Gierse Raymundo 10428453
 //Luana Domingo Branco 10428459
 //Victor Luiz de Sá Alves 10426310
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+
 
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "receita")
 public class Receita {
     @Id
-    private Long id;
-    private String nome;
+   private UUID id;    
+   private String nome;
     private String descricao;
     private String urlImagem;
     private String ingredientes;
@@ -32,7 +29,7 @@ public class Receita {
         this.modoPreparo = modoPreparo;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -56,7 +53,7 @@ public class Receita {
         return modoPreparo;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

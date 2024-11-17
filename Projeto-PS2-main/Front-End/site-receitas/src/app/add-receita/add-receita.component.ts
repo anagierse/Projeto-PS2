@@ -56,7 +56,7 @@ export class AddReceitaComponent implements OnInit {
     if (Array.isArray(this.recipe.ingredientes)) {
       this.recipe.ingredientes = this.recipe.ingredientes.join(", ");
     }
-  
+  console.log("receita: ", this.recipe)
     this.receitaService.saveReceita(this.recipe).subscribe({
       next: (response: any) => {
         console.log('Receita criada com sucesso!', response);

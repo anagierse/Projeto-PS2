@@ -20,8 +20,8 @@ export class ReceitaService {
   }
 
   saveReceita(receita: Receita): Observable<Receita> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<Receita>(`${this.baseUrl}`, receita, { headers });
+    console.log("receita dnv", receita)
+    return this.http.post<Receita>(`${this.baseUrl}`, receita);
   }
   deleteReceita(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
