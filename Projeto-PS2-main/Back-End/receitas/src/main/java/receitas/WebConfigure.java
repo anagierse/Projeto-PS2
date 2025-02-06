@@ -1,7 +1,5 @@
 package receitas;
-//Ana Clara Gierse Raymundo 10428453
-//Luana Domingo Branco 10428459
-//Victor Luiz de Sá Alves 10426310
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
