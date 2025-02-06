@@ -1,7 +1,4 @@
 package receitas.controllers;
-//Ana Clara Gierse Raymundo 10428453
-//Luana Domingo Branco 10428459
-//Victor Luiz de Sá Alves 10426310
 
 import java.util.Optional;
 import java.util.UUID;
